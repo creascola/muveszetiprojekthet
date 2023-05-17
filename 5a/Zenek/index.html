@@ -148,7 +148,8 @@
 </head>
 <body>
   <div id="fileList">
-    muveszetiprojekthet/5a/Zenek <button onclick="location.href = 'https://creascola.github.io/muveszetiprojekthet/5a/Zenek/upload/';">Upload</button>
+    muveszetiprojekthet/5a/Zenek <button onclick="location.href = 'https://creascola.github.io/muveszetiprojekthet/5a/Zenek/upload/';">Upload</button><br/>
+    <a href="https://creascola.github.io/muveszetiprojekthet/5a/">⬅️ Up a Level</a>
   </div>
 
   <script>
@@ -165,12 +166,12 @@
           if (item.type === 'file') {
             const link = document.createElement('a');
             link.href = "https://creascola.github.io/muveszetiprojekthet/5a/Zenek/" + item.name;
-            link.textContent = item.name;
+            link.textContent = "📄" + item.name;
             listItem.appendChild(link);
           } else if (item.type === 'dir') {
             const link = document.createElement('a');
             link.href = "https://creascola.github.io/muveszetiprojekthet/5a/Zenek/" + item.name;
-            link.textContent = "/" + item.name;
+            link.textContent = "📁" + item.name;
             listItem.appendChild(link);
           }
 
@@ -183,5 +184,3 @@
   </script>
 </body>
 </html>
-
-

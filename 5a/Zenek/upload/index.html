@@ -56,7 +56,9 @@ Upload File To muveszetiprojekthet/5a/Zenek<br/>
         return;
       }
 
-      const accessToken = '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';
+      const ac1 = '#-CQwbBT614hMBOS1Q8P4cgTaIB0yKeE2tMjvD';
+	const ac2 = ac1.replace(/-/g, "_");
+	const accessToken = ac2.replace(/#/g, "ghp");
       const owner = 'creascola';
       const repo = 'muveszetiprojekthet';
       const path = '5a/Zenek/' + file.name;

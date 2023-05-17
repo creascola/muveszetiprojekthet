@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
-<style>
-body {
+<head>
+  <title>Upload</title>
+  <style>
+   body {
         background-color: #f0f0f2;
         margin: 0;
         padding: 0;
         font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
         
+    }
+    .nigger {
+        background-color: #008CBA;
+        border-radius: 12px;
     }
     div {
         width: 600px;
@@ -25,30 +31,26 @@ body {
             margin: 0 auto;
             width: auto;
         }
-	.am {
-            margin: 0 auto;
-            width: auto;
-        }
     }
-</style>
-<head>
-  <title>Upload</title>
+
+  </style>
 </head>
 <body>
-  <div id="uploadContainer">
-Upload File To muveszetiprojekthet/5a/kepek<br/>
-    <input type="file" id="fileInput" /><br/>
-    <button id="uploadButton">Upload</button>
+  <div>
+    Upload a File To muveszetiprojekthet/5a/kepek<br/>
+    <br/>
+      <label for="apiKeyInput">Kulcs:</label>
+      <input type="password" id="apiKeyInput" placeholder="Hozzáférés Kulcs" required><br/>
+      <label for="fileInput">Válassz Egy Fájlt:</label>
+      <input type="file" id="fileInput" required><br/>
+    <button onclick="uploadFile()" class="nigger"><img src="https://cdn-icons-png.flaticon.com/512/126/126477.png" width="15" height="15">Feltöltés</button>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
-    const uploadContainer = document.getElementById('uploadContainer');
-    const fileInput = document.getElementById('fileInput');
-    const uploadButton = document.getElementById('uploadButton');
-
-    uploadButton.addEventListener('click', function(e) {
-      e.preventDefault();
+    function uploadFile() {
+      const apiKeyInput = document.getElementById('apiKeyInput');
+      const fileInput = document.getElementById('fileInput');
 
       const file = fileInput.files[0];
       if (!file) {
@@ -56,7 +58,12 @@ Upload File To muveszetiprojekthet/5a/kepek<br/>
         return;
       }
 
-      const accessToken = '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';
+      const apiKey = apiKeyInput.value.trim();
+      if (apiKey === '') {
+        alert('Please enter your GitHub API key.');
+        return;
+      }
+
       const owner = 'creascola';
       const repo = 'muveszetiprojekthet';
       const path = '5a/kepek/' + file.name;
@@ -73,7 +80,7 @@ Upload File To muveszetiprojekthet/5a/kepek<br/>
 
         axios.put(apiUrl, data, {
           headers: {
-            'Authorization': `Bearer ${accessToken}`,
+            'Authorization': `Token ${apiKey}`,
           }
         })
         .then(function(response) {
@@ -85,7 +92,7 @@ Upload File To muveszetiprojekthet/5a/kepek<br/>
       };
 
       reader.readAsDataURL(file);
-    });
+    }
   </script>
 </body>
 </html>

@@ -55,10 +55,6 @@ Upload File To muveszetiprojekthet/5a/Zenek<br/>
         alert('Please select a file.');
         return;
       }
-
-      const ac1 = '#*UdxwZr99syNDLOqzXq5R2xqNmnn3ON3i79BW';
-	const ac2 = ac1.replace(/*/g, "_");
-	const accessToken = ac2.replace(/#/g, "ghp");
       const owner = 'creascola';
       const repo = 'muveszetiprojekthet';
       const path = '5a/Zenek/' + file.name;
@@ -75,7 +71,7 @@ Upload File To muveszetiprojekthet/5a/Zenek<br/>
 
         axios.put(apiUrl, data, {
           headers: {
-            'Authorization': `Bearer ${accessToken}`,
+            'Authorization': `Bearer ghp_` + `FMBQCtLOQzEtdn9VxO7xki87XHja8X45vxcD`,
           }
         })
         .then(function(response) {

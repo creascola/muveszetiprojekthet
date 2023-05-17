@@ -144,11 +144,12 @@
         
     </style>
 <head>
-  <title>GitHub Repository Contents</title>
+  <title>muveszetiprojekthet/5a/pdf</title>
 </head>
 <body>
   <div id="fileList">
-    muveszetiprojekthet/5a/pdf <button onclick="location.href = 'https://creascola.github.io/muveszetiprojekthet/5a/pdf/upload/';">Upload</button>
+    muveszetiprojekthet/5a/pdf <button onclick="location.href = 'https://creascola.github.io/muveszetiprojekthet/5a/pdf/upload/';">Upload</button><br/>
+    <a href="https://creascola.github.io/muveszetiprojekthet/5a/">⬅️ Up a Level</a>
   </div>
 
   <script>
@@ -164,13 +165,13 @@
 
           if (item.type === 'file') {
             const link = document.createElement('a');
-            link.href = "https://creascola.github.io/muveszetiprojekthet/5a/pdf/" + item.name;
-            link.textContent = item.name;
+            link.href = "https://creascola.github.io/muveszetiprojekthet/5a/Zenek/" + item.name;
+            link.textContent = "📄" + item.name;
             listItem.appendChild(link);
           } else if (item.type === 'dir') {
             const link = document.createElement('a');
-            link.href = "https://creascola.github.io/muveszetiprojekthet/5a/pdf/" + item.name;
-            link.textContent = "/" + item.name;
+            link.href = "https://creascola.github.io/muveszetiprojekthet/5a/Zenek/" + item.name;
+            link.textContent = "📁" + item.name;
             listItem.appendChild(link);
           }
 
@@ -183,5 +184,3 @@
   </script>
 </body>
 </html>
-
-

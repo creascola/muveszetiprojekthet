@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {
+        background-color: #f0f0f2;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        
+    }
+    div {
+        width: 600px;
+        margin: 5em auto;
+        padding: 2em;
+        background-color: #fdfdff;
+        border-radius: 0.5em;
+        box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
+    }
+    a:link, a:visited {
+        color: #38488f;
+        text-decoration: none;
+    }
+    @media (max-width: 700px) {
+        div {
+            margin: 0 auto;
+            width: auto;
+        }
+	.am {
+            margin: 0 auto;
+            width: auto;
+        }
+    }
+</style>
+<head>
+  <title>Upload</title>
+</head>
+<body>
+  <div id="uploadContainer">
+Upload File To muveszetiprojekthet/5a/Zenek<br/>
+    <input type="file" id="fileInput" /><br/>
+    <button id="uploadButton">Upload</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const uploadContainer = document.getElementById('uploadContainer');
+    const fileInput = document.getElementById('fileInput');
+    const uploadButton = document.getElementById('uploadButton');
+
+    uploadButton.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      const file = fileInput.files[0];
+      if (!file) {
+        alert('Please select a file.');
+        return;
+      }
+
+      const accessToken = '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';
+      const owner = 'creascola';
+      const repo = 'muveszetiprojekthet';
+      const path = '5a/Zenek/' + file.name;
+
+      const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+      const reader = new FileReader();
+
+      reader.onloadend = function() {
+        const fileContent = reader.result.split(',')[1];
+        const data = {
+          message: 'Upload file',
+          content: fileContent,
+        };
+
+        axios.put(apiUrl, data, {
+          headers: {
+            'Authorization': `Bearer ${accessToken}`,
+          }
+        })
+        .then(function(response) {
+          alert('File uploaded successfully.');
+        })
+        .catch(function(error) {
+          alert('Error uploading file:', error);
+        });
+      };
+
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body>
+</html>

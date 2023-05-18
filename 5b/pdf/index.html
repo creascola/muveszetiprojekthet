@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <style type="text/css"> 
+    input[type=password] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      padding-left: 17px;
+      box-sizing: border-box;
+      border: 2px solid blue;
+      border-radius: 4px;
+    }
+    input[type=text] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 2px solid blue;
+      border-radius: 4px;
+    }
+    ::selection {
+      /* Change highlight background color to black */
+      background: #3faa24;
+      /* Change highlight text color to red */
+      color: #ffffff;
+    }
+    .button1 {
+      background-color: #3880eb; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      border-radius: 12px;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    .button2 {
+      background-color: #3fabef; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    .button7 {
+      background-color: #7289DA; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      border-radius: 12px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    .button6 {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      background-color: white; 
+      color: black; 
+      border: 2px solid #4CAF50;
+    }
+    .button9 {
+        background-color: #4CAF50; /* Green */
+      border: none;
+      color: #4CAF50;
+      padding: 15px 32px;
+      text-align: center;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      background-color: #4CAF50; 
+      color: white; 
+    }
+    .input-icons i {
+      position: absolute;
+    }
+    
+    .input-icons {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    
+    .icon {
+      padding: 10px;
+      min-width: 40px;
+    }
+    
+    .input-field {
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+    }
+    .my_text {
+        font-family: 'Libre Barcode 39';font-size: 22px;
+        text-align: center;
+    }
+    body {
+            background-color: #f0f0f2;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            
+        }
+        div {
+            width: 600px;
+            margin: 5em auto;
+            padding: 2em;
+            background-color: #fdfdff;
+            border-radius: 0.5em;
+            box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
+        }
+        a:link, a:visited {
+            color: #38488f;
+            text-decoration: none;
+        }
+        @media (max-width: 700px) {
+            div {
+                margin: 0 auto;
+                width: auto;
+            }
+        }
+        
+    </style>
+<head>
+  <title>muveszetiprojekthet/5b/pdf</title>
+</head>
+<body>
+  <div id="fileList">
+    muveszetiprojekthet/5b/pdf <button onclick="location.href = 'https://creascola.github.io/muveszetiprojekthet/5b/pdf/upload/';">Upload</button><br/>
+    <a href="https://creascola.github.io/muveszetiprojekthet/5b/">⬅️ Up a Level</a>
+  </div>
+
+  <script>
+    // Fetch repository contents using GitHub API
+    const apiUrl = 'https://api.github.com/repos/creascola/muveszetiprojekthet/contents/5b/pdf';
+    const fileListElement = document.getElementById('fileList');
+
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(item => {
+          const listItem = document.createElement('li');
+
+          if (item.type === 'file') {
+            const link = document.createElement('a');
+            link.href = "https://creascola.github.io/muveszetiprojekthet/5b/pdf/" + item.name;
+            link.textContent = "📄" + item.name;
+            listItem.appendChild(link);
+          } else if (item.type === 'dir') {
+            const link = document.createElement('a');
+            link.href = "https://creascola.github.io/muveszetiprojekthet/5b/pdf/" + item.name;
+            link.textContent = "📁" + item.name;
+            listItem.appendChild(link);
+          }
+
+          fileListElement.appendChild(listItem);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching repository contents:', error);
+      });
+  </script>
+</body>
+</html>

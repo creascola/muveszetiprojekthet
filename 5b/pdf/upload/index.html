@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload</title>
+  <style>
+   body {
+        background-color: #f0f0f2;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        
+    }
+    .nigger {
+        background-color: #008CBA;
+        border-radius: 12px;
+    }
+    div {
+        width: 600px;
+        margin: 5em auto;
+        padding: 2em;
+        background-color: #fdfdff;
+        border-radius: 0.5em;
+        box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
+    }
+    a:link, a:visited {
+        color: #38488f;
+        text-decoration: none;
+    }
+    @media (max-width: 700px) {
+        div {
+            margin: 0 auto;
+            width: auto;
+        }
+    }
+
+  </style>
+</head>
+<body>
+  <div>
+    Upload a File To muveszetiprojekthet/5b/pdf<br/>
+    <br/>
+      <label for="apiKeyInput">Kulcs:</label>
+      <input type="password" id="apiKeyInput" placeholder="Hozzáférés Kulcs" required><br/>
+      <label for="fileInput">Válassz Egy Fájlt:</label>
+      <input type="file" id="fileInput" required><br/>
+    <button onclick="uploadFile()" class="nigger"><img src="https://cdn-icons-png.flaticon.com/512/126/126477.png" width="15" height="15">Feltöltés</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    function uploadFile() {
+      const apiKeyInput = document.getElementById('apiKeyInput');
+      const fileInput = document.getElementById('fileInput');
+
+      const file = fileInput.files[0];
+      if (!file) {
+        alert('Please select a file.');
+        return;
+      }
+
+      const apiKey = apiKeyInput.value.trim();
+      if (apiKey === '') {
+        alert('Please enter your GitHub API key.');
+        return;
+      }
+
+      const owner = 'creascola';
+      const repo = 'muveszetiprojekthet';
+      const path = '5b/pdf/' + file.name;
+
+      const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+      const reader = new FileReader();
+
+      reader.onloadend = function() {
+        const fileContent = reader.result.split(',')[1];
+        const data = {
+          message: 'Upload file',
+          content: fileContent,
+        };
+
+        axios.put(apiUrl, data, {
+          headers: {
+            'Authorization': `Token ${apiKey}`,
+          }
+        })
+        .then(function(response) {
+          alert('File uploaded successfully.');
+        })
+        .catch(function(error) {
+          alert('Error uploading file:', error);
+        });
+      };
+
+      reader.readAsDataURL(file);
+    }
+  </script>
+</body>
+</html>
